@@ -1,0 +1,33 @@
+{
+  "Rects": null,
+  "Def": {
+    "__cHei": 30,
+    "__cWid": 3,
+    "cachedPixelData": {
+      "opaqueTiles": "111111111111000000000000100100000111111110111110000000011011111000000000000111000000000000",
+      "averageColors": "f87cf76bf86cf76af75af75af325f548f548f325f325f325366637783567376726793668266616652666d222d222b222f222d222d222f222d222d22225dd26dd26ddf458f348f347f235f224f235f235f224e224f5cbf5cbf5cbf75af548000000000000e233b377d355c345d355f112f112c345f112f112f324f324f324000000000000000000000000000000000000000000000000f552f524f254000000000000000000000000000000000000000000000000"
+    },
+    "customData": [
+
+    ],
+    "embedAtlas": null,
+    "enumTags": [
+
+    ],
+    "identifier": "Structure_1",
+    "padding": 0,
+    "pxHei": 240,
+    "pxWid": 24,
+    "relPath": "tilemap_0125.png",
+    "savedSelections": [
+
+    ],
+    "spacing": 0,
+    "tags": [
+
+    ],
+    "tagsSourceEnumUid": null,
+    "tileGridSize": 8,
+    "uid": 2
+  }
+}

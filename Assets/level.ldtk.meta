@@ -1,0 +1,112 @@
+fileFormatVersion: 2
+guid: 13e6b4190f088b743b74a359cbe1b7be
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _reimportOnDependencyChange: 1
+  _jsonFile: {fileID: -164016180542632921, guid: 13e6b4190f088b743b74a359cbe1b7be, type: 3}
+  _pixelsPerUnit: 16
+  _customLevelPrefab: {instanceID: 0}
+  _intGridValueColorsVisible: 0
+  _useCompositeCollider: 1
+  _geometryType: 0
+  _createBackgroundColor: 1
+  _createLevelBoundsTrigger: 0
+  _intGridValues:
+  - _key: Structure2_1
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Obstacles_1
+    _asset: {fileID: 11400000, guid: 7855908994a5d6349a2496a965f9e6f4, type: 2}
+  - _key: Obstacles_2
+    _asset: {fileID: 11400000, guid: 5d78a67663f73db4380381c7a2cf0c8a, type: 2}
+  - _key: Obstacles_3
+    _asset: {fileID: 11400000, guid: 6fb4a819ea637704184e6b746011fb72, type: 2}
+  - _key: Obstacles_4
+    _asset: {fileID: 11400000, guid: 48fe92354dd08e94e85e47debf00006b, type: 2}
+  - _key: Obstacles_5
+    _asset: {fileID: 11400000, guid: f0a5d76753ccff748961a89c276882ae, type: 2}
+  - _key: Obstacles_6
+    _asset: {fileID: 11400000, guid: 18e857c864498a944934da53afec7c74, type: 2}
+  - _key: Structure1_1
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Structure1_6
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Structure1_2
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Structure1_3
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Structure1_4
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Structure1_5
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Portal_1
+    _asset: {instanceID: 0}
+  - _key: Reverse_Gravity_1
+    _asset: {instanceID: 0}
+  - _key: Lasers_1
+    _asset: {instanceID: 0}
+  - _key: JumpPad_1
+    _asset: {instanceID: 0}
+  - _key: Wall_horizontal_1
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_horizontal_2
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_horizontal2_1
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_horizontal2_2
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_horizontal3_1
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_horizontal3_2
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_horizontal4_1
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_horizontal4_2
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_horizontal5_1
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_horizontal5_2
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_vertical_1
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_vertical_2
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_vertical_2_1
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_vertical_2_2
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_vertical_3_1
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_vertical_3_2
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_vertical_4_1
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_vertical_4_2
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_vertical_5_1
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wall_vertical_5_2
+    _asset: {fileID: 11400000, guid: 4eef8f52bfc459d499c940dab88bfd93, type: 2}
+  - _key: Wind_1
+    _asset: {instanceID: 0}
+  - _key: Deco3_1
+    _asset: {instanceID: 0}
+  - _key: Indestrial_1
+    _asset: {instanceID: 0}
+  - _key: Indestrial_2
+    _asset: {instanceID: 0}
+  - _key: Indestrial_3
+    _asset: {instanceID: 0}
+  - _key: Start_Goal_1
+    _asset: {instanceID: 0}
+  - _key: Start_Goal_2
+    _asset: {instanceID: 0}
+  _entities: []
+  _enumGenerate: 0
+  _enumPath: 
+  _enumNamespace: 

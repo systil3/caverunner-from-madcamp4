@@ -1,0 +1,126 @@
+fileFormatVersion: 2
+guid: 6bc765dac81e4c045aa51d6f53783e0e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: f3268c876daf4890b6af6cd462063137, type: 3}
+  _reimportOnDependencyChange: 1
+  _pixelsPerUnit: 16
+  _sprites:
+  - name: Obstacles_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 24
+      width: 8
+      height: 8
+    spriteID: 990fcd256da267347a4357f6e0206ef4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Obstacles_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 24
+      width: 8
+      height: 8
+    spriteID: 2dc2154c483411847938b6c792335b29
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Obstacles_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 16
+      width: 8
+      height: 8
+    spriteID: 58183c5bb29885249a3ee86d9d35569f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Obstacles_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 16
+      width: 8
+      height: 8
+    spriteID: 4a15927b26dfe1a4f9aaf1a4f2debb9d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Obstacles_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 8
+      width: 8
+      height: 8
+    spriteID: 2dc1905fceb19f24dbda900fc67918a5
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Obstacles_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 8
+      width: 8
+      height: 8
+    spriteID: 620936867e36d6a4c9396ea28d1ff73b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Obstacles_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 8
+      height: 8
+    spriteID: 8a78bae6f9cc02a478918254ed6239e4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Obstacles_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 0
+      width: 8
+      height: 8
+    spriteID: ee868c52c96fe904999ab63402e3b381
+    spriteOutline: []
+    tessellationDetail: 0
+  _secondaryTextures: []

@@ -3,12 +3,26 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - field
+  - wall
+  - JumpUp
+  - Obstacles
+  - key
+  - flag
+  - SuperJumpBlock
+  - portal
+  - laser
+  - bullet
+  - energy
+  - breakablewall
+  - endflag
+  - health
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Wall
   - Water
   - UI
   - 

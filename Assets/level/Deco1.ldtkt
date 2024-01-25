@@ -1,0 +1,33 @@
+{
+  "Rects": null,
+  "Def": {
+    "__cHei": 3,
+    "__cWid": 2,
+    "cachedPixelData": {
+      "opaqueTiles": "000000",
+      "averageColors": "377636773887278838882887"
+    },
+    "customData": [
+
+    ],
+    "embedAtlas": null,
+    "enumTags": [
+
+    ],
+    "identifier": "Deco1",
+    "padding": 0,
+    "pxHei": 24,
+    "pxWid": 16,
+    "relPath": "New Piskel (6).png",
+    "savedSelections": [
+
+    ],
+    "spacing": 0,
+    "tags": [
+
+    ],
+    "tagsSourceEnumUid": null,
+    "tileGridSize": 8,
+    "uid": 23
+  }
+}

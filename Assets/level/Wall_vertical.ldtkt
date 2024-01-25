@@ -1,0 +1,33 @@
+{
+  "Rects": null,
+  "Def": {
+    "__cHei": 24,
+    "__cWid": 2,
+    "cachedPixelData": {
+      "opaqueTiles": "111111111111111111111111000000001111000000000000",
+      "averageColors": "f555f444f555f444f555f444f544f444f555f444f555f444f555f444f555f444f555f444f555f444f555f444f544f44400000000000000000000000000000000f764f645f365f645000000000000000000000000000000000000000000000000"
+    },
+    "customData": [
+
+    ],
+    "embedAtlas": null,
+    "enumTags": [
+
+    ],
+    "identifier": "Wall_vertical",
+    "padding": 0,
+    "pxHei": 192,
+    "pxWid": 16,
+    "relPath": "aseprite files/wall.png",
+    "savedSelections": [
+
+    ],
+    "spacing": 0,
+    "tags": [
+
+    ],
+    "tagsSourceEnumUid": null,
+    "tileGridSize": 8,
+    "uid": 38
+  }
+}

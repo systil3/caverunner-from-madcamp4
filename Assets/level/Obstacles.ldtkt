@@ -1,0 +1,33 @@
+{
+  "Rects": null,
+  "Def": {
+    "__cHei": 4,
+    "__cWid": 2,
+    "cachedPixelData": {
+      "opaqueTiles": "00000000",
+      "averageColors": "93a79a549a5493a77356735600000000"
+    },
+    "customData": [
+
+    ],
+    "embedAtlas": null,
+    "enumTags": [
+
+    ],
+    "identifier": "Obstacles",
+    "padding": 0,
+    "pxHei": 32,
+    "pxWid": 16,
+    "relPath": "aseprite files/obstacles/Spike/spike.png",
+    "savedSelections": [
+
+    ],
+    "spacing": 0,
+    "tags": [
+
+    ],
+    "tagsSourceEnumUid": null,
+    "tileGridSize": 8,
+    "uid": 17
+  }
+}
