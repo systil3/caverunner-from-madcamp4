@@ -314,6 +314,14 @@ public class Player : MonoBehaviour
             }
         } 
 
+        if(other.tag == "health"){
+            if(life < 6) {
+                life++;
+                gameManager.RefreshLifeState(life);
+                Destroy(other.gameObject);
+            }
+        }
+
         if(other.tag == "energy") {
             if(energy < 4) {
                 energy++;
@@ -330,9 +338,11 @@ public class Player : MonoBehaviour
         }
 
         if (life == 1) {
+            //gameManager.RefreshLifeState(0);
             Die();
         } else {
             life--;
+            gameManager.RefreshLifeState(life);
             //가시나 톱니 등에 충돌시에는 그쪽으로 힘을 받아야 함
             if(collision != null) {
                 Vector2 normal = collision.contacts[0].normal;
@@ -347,7 +357,6 @@ public class Player : MonoBehaviour
 
     IEnumerator DamageCoroutine() {
         invisible = true;
-        gameManager.RefreshLifeState(life);
         animator.SetBool("isDamaging", true);
         yield return new WaitForSeconds(invisibleTime);
         invisible = false;
@@ -393,14 +402,6 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "key") {
             collision.gameObject.GetComponent<Key>().ActivateWall();
             Destroy(collision.gameObject);
-        }
-
-        if(collision.gameObject.tag == "health"){
-            if(life < 6) {
-                life++;
-                gameManager.RefreshLifeState(life);
-                Destroy(collision.gameObject);
-            }
         }
 
         if(collision.gameObject.tag == "SuperJumpBlock") {
