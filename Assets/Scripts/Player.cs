@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public float dashSpeed;
     public float dashDuration; // 대시 지속 시간
     public float dashCooldown; // 대시 쿨다운
+    public GameObject DashBar;
+    private Animator DashBarAnimator;
     private float gravityMagnitude;
     private bool gravityReversed = false;
     private bool invisible;
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
     public float BulletForce;
     public LineRenderer ReflectionLine;
     public LayerMask ReflectionLayerMask;
+    public LayerMask WallLayerMask;
     public int maxReflectionPoints;
     private Rigidbody2D rb;
     private Vector2 moveDirection;
@@ -36,8 +39,7 @@ public class Player : MonoBehaviour
     public float shootSpeed;
     private int reflectionNumber = 0;
     private int energy = 3;
-    private int life = 6;
-
+    private int life = 5;
     private bool isFacingRight = true;
     private float dashTime;
     private float nextDashTime = 0f;
@@ -46,8 +48,15 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI activatecheatmode;
     public TextMeshProUGUI incheatmode;
     private bool ischeatmode = false;
-    //private Transform CameraTransform;
-
+   
+    public AudioSource healthAudioSource;
+    public AudioSource energyAudioSource;
+    public AudioSource hitAudioSource;
+    public AudioSource dieAudioSource;
+    void Awake() {
+        DashBarAnimator = DashBar.transform.GetComponent<Animator>();
+    }
+    
     void Start(){
         
         animator = GetComponent<Animator>();
@@ -58,13 +67,15 @@ public class Player : MonoBehaviour
         shootPositions = new Vector3[ReflectionLine.positionCount];
         gameManager.RefreshEnergyState(energy);
         incheatmode.enabled = false;
-         //CameraTransform = transform.Find("Camera");
-        
     }
 
     void Update(){
 
+        //키 입력 받음
         ProcessInputs();
+        if(Time.time >= nextDashTime) {
+            DashBarAnimator.SetBool("isCharging", false);
+        }
 
         if(!animator.GetBool("isReflecting")) {
             SetPredictionLine();
@@ -74,13 +85,30 @@ public class Player : MonoBehaviour
             } else {
                 ReflectionLine.enabled = false;
             }
-            Move();
-            
+
+            // 벽 충돌 감지시에만 raycast 사용
+            RaycastHit2D wallHit = Physics2D.Raycast(transform.position + 0.001f * (Vector3)rb.velocity,
+                             rb.velocity, rb.velocity.magnitude * Time.deltaTime * 10, WallLayerMask);
+            if (wallHit.collider != null)
+            {
+                animator.SetBool("isWalking", true);
+                if(moveDirection.x * rb.velocity.x >= 0) {
+                    Vector2 rbv = rb.velocity;
+                    rbv.x = 0;
+                    rb.velocity = rbv;
+                } else {
+                    Move();
+                }
+                
+            } else {
+                Move();
+            }
+
         } else {
         
             Vector3 nextPosition = transform.position + shootDirection * shootSpeed * Time.deltaTime;
 
-            // cave 시에만 raycast 사용
+            // cave 시에 raycast 사용
             RaycastHit2D hit = Physics2D.Raycast(transform.position + 0.001f * shootDirection,
                              shootDirection, shootSpeed * Time.deltaTime * 10, ReflectionLayerMask);
 
@@ -90,14 +118,7 @@ public class Player : MonoBehaviour
                 return;
             } else {
                 transform.position = nextPosition;
-            }
-        }
-
-        if(horizontaldirection != Vector2.zero) {
-            transform.Translate(horizontaldirection*moveSpeed*Time.deltaTime);
-            animator.SetBool("isWalking", true);
-        } else {
-            animator.SetBool("isWalking", false);
+            } animator.SetBool("isWalking", false);
         }
     }
 
@@ -164,22 +185,6 @@ public class Player : MonoBehaviour
         ReflectionLine.enabled = true;
     }
 
-    void ShootBullet() {
-        mousePosition = crosshair.transform.position;
-        float rotationAngle = Mathf.Atan2(mousePosition.y - transform.position.y,
-                                                    mousePosition.x - transform.position.x);
-        float rotationDegrees = rotationAngle * Mathf.Rad2Deg;  // 라디안 각도를 도로 변환
-
-        // Quaternion.Euler을 사용하여 회전을 정의`
-        Quaternion rotation = Quaternion.Euler(0f, 0f, rotationDegrees);
-
-        bullet = Instantiate(BulletPrefab, transform.position, rotation);
-        bullet.GetComponent<Bullet>().MovePos = new Vector3(mousePosition.x - transform.position.x,
-                                                    mousePosition.y - transform.position.y, 0).normalized; 
-        bullet.GetComponent<Bullet>().initVelocity = BulletForce;
-    }
-
-
     void ProcessInputs()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
@@ -232,24 +237,37 @@ public class Player : MonoBehaviour
 
     void Move()
     {   
-        bool isReflecting = animator.GetBool("isReflecting");
+        if(horizontaldirection != Vector2.zero) {
+            //rb.velocity = horizontaldirection*moveSpeed;
+            transform.Translate(horizontaldirection*moveSpeed*Time.deltaTime);
+            animator.SetBool("isWalking", true);
+        } else {
+            animator.SetBool("isWalking", false);
+        } 
+        
+        if(Input.GetKeyDown(KeyCode.Space) && animator.GetBool("isJumping") == false){
+            Jump();
+            return;
+        }
 
-        if (isDashing && !isReflecting){
+        if (isDashing){
             if (Time.time >= dashTime){
                 StopDash();
+                return;
             }
         }
+        
         else{
-            if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time >= nextDashTime && !isReflecting && !isDashing){
+            if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time >= nextDashTime) {
                 ghost.makeghost = true;
                 StartDash();
                 return;
-            } else {
+                } else {
                 ghost.makeghost = false;
             }
         }
-
-        if(Input.GetMouseButtonDown(0) && !isReflecting) {
+        
+        if(Input.GetMouseButtonDown(0)) {
             //ShootBullet();
             if(energy > 0) {
                 energy--;
@@ -258,19 +276,8 @@ public class Player : MonoBehaviour
                 return;
             }
         }
-
-        if(isReflecting) {
-            transform.Translate(shootDirection*moveSpeed*Time.deltaTime);
-            return;
-        }
         
-        if(Input.GetKeyDown(KeyCode.Space) && animator.GetBool("isJumping") == false && !isDashing){
-            Jump();
-            return;
-        }
     }
-
-
     void Jump() {
         animator.SetBool("isJumping", true);
         //rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -286,6 +293,7 @@ public class Player : MonoBehaviour
         nextDashTime = Time.time + dashCooldown;
         //8방향 대시
         Vector2 dashDirection;
+        //dashDirection = (Vector2)(crosshair.transform.position - transform.position).normalized;
         if(moveDirection.x == 0 && moveDirection.y == 0) {
             dashDirection = transform.localScale.x < 0 ? Vector2.left : Vector2.right; } 
         else {
@@ -294,6 +302,7 @@ public class Player : MonoBehaviour
             dashDirection = new Vector2(dirx, diry).normalized;
         }
 
+        DashBarAnimator.SetBool("isCharging", true);
         rb.AddForce(dashDirection * dashSpeed, ForceMode2D.Impulse);
     }
 
@@ -301,23 +310,22 @@ public class Player : MonoBehaviour
     {
         isDashing = false;
         //rb.gravityScale = gravityMagnitude * (gravityReversed ? -1 : 1);
-        //rb.velocity = moveDirection * moveSpeed; // 대시 후 속도 초기화
+        rb.velocity = moveDirection * moveSpeed; // 대시 후 속도 초기화
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         //레이저는 빔 상태일 시 회피 가능
         if(other.tag == "laser") {
             if(!(isDashing || animator.GetBool("isReflecting"))) {
-                if(!ischeatmode){
-                    Damage();
-                }
+                Damage();
             }
         } 
 
         if(other.tag == "health"){
-            if(life < 6) {
+            if(life < 5) {
                 life++;
                 gameManager.RefreshLifeState(life);
+                gameManager.PlayAudio(healthAudioSource);
                 Destroy(other.gameObject);
             }
         }
@@ -326,6 +334,7 @@ public class Player : MonoBehaviour
             if(energy < 4) {
                 energy++;
                 gameManager.RefreshEnergyState(energy);
+                gameManager.PlayAudio(energyAudioSource);
                 Destroy(other.gameObject);
             }
         }        
@@ -338,10 +347,14 @@ public class Player : MonoBehaviour
         }
 
         if (life == 1) {
-            //gameManager.RefreshLifeState(0);
-            Die();
+            gameManager.RefreshLifeState(0);
+            if(!ischeatmode) Die();
+            else {
+                StartCoroutine(DamageAnimCoroutine());
+            }
         } else {
             life--;
+            gameManager.PlayAudio(hitAudioSource);
             gameManager.RefreshLifeState(life);
             //가시나 톱니 등에 충돌시에는 그쪽으로 힘을 받아야 함
             if(collision != null) {
@@ -351,11 +364,11 @@ public class Player : MonoBehaviour
                 Vector2 correctedNormal = new Vector2(math.cos(angle), math.sin(angle));
                 rb.AddForce(correctedNormal * 40f, ForceMode2D.Impulse);
             }
-            StartCoroutine(DamageCoroutine());
+            StartCoroutine(DamageAnimCoroutine());
         }
     }
 
-    IEnumerator DamageCoroutine() {
+    IEnumerator DamageAnimCoroutine() {
         invisible = true;
         animator.SetBool("isDamaging", true);
         yield return new WaitForSeconds(invisibleTime);
@@ -367,9 +380,7 @@ public class Player : MonoBehaviour
 
         //가시나 톱니
         if(collision.transform.tag == "Obstacles") {
-            if(!ischeatmode){
                 Damage(collision);
-            }  
         }
 
         if(collision.gameObject.tag == "flag") {
@@ -412,7 +423,6 @@ public class Player : MonoBehaviour
         }
 
         if(collision.gameObject.tag == "JumpUp"){
-            Debug.Log("JumpUp 당첨");
             Animator jumpPadAnimator = collision.gameObject.GetComponent<Animator>();
 
             // Animator가 있으면 애니메이션 재생

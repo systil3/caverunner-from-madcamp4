@@ -24,7 +24,7 @@ public class Turret : Enemy
                 attackPeriod = clip.length;
                 break;
             } else {
-                print("애니메이션을 찾을 수 없음");
+                
             }
         }
     }

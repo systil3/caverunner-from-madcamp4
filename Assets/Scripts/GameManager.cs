@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Sprite[] EnergystateSprite;
     public GameObject LifeStateUI;
     public Sprite[] LifestateSprite;
+    public Sprite[] DashChargeSprite;
     public TextMeshProUGUI timetext;
     private float elapsedtime;
     private float currentTime = 0f;
@@ -27,12 +28,12 @@ public class GameManager : MonoBehaviour
     public GameObject endpanel;
     public TextMeshProUGUI endtimetext;
     // Start is called before the first frame update
-    public AudioSource audioSource;
+    public AudioSource backGroundMusic;
     private void Awake() {
         gameManager = this;
         startPosition = Player.transform.position;
-        audioSource.loop = true;
-        audioSource.Play();
+        backGroundMusic.loop = true;
+        backGroundMusic.Play();
     }
 
     // Update is called once per frame
@@ -105,12 +106,17 @@ public class GameManager : MonoBehaviour
         cameraMove.Player = newPlayer;*/
     }
 
+    public void PlayAudio(AudioSource audioSource) {
+        if(audioSource != null) {
+            audioSource.Play();
+        }
+    }
+
     public void RefreshEnergyState(int energy) {
         EnergyStateUI.GetComponent<UnityEngine.UI.Image>().sprite = EnergystateSprite[energy];
     }
     public void RefreshLifeState(int life) {
-        Debug.Log($"{life}");
-        LifeStateUI.GetComponent<UnityEngine.UI.Image>().sprite = LifestateSprite[life-1];
+        LifeStateUI.GetComponent<UnityEngine.UI.Image>().sprite = LifestateSprite[life];
     }
     public void gotogameoverscene(){
         Cursor.visible = true;

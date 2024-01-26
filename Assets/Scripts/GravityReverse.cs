@@ -21,9 +21,7 @@ public class GravityReverse: MonoBehaviour
         {
             // 플레이어가 구역에 들어오면 중력 반전
             if(Input.GetKey(KeyCode.Space)) {
-                print("스페이스바");
                 collision.gameObject.GetComponent<Player>().ReverseGravity();
-                Destroy(gameObject);
             }
         }
     }

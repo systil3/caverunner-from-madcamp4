@@ -21,7 +21,6 @@ public class Background : MonoBehaviour
             float py = Player.transform.position.y;
             Vector3 localPosition = new Vector3(initLocalPosition.x - 70 * px / 65, 
                             initLocalPosition.y - 49 * py / 72, transform.localPosition.z);
-            print(localPosition);
             transform.localPosition = localPosition;
         }
     }
